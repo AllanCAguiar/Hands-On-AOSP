@@ -1,2 +1,7 @@
 .idea/
 *.iml
+*
+!src/com/android/settings/password/ScreenLockType.java
+!src/com/android/settings/password/ChooseLockGeneric.java
+!src/com/android/settings/password/ChooseLockDevtitans.java
+
