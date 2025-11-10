@@ -735,6 +735,23 @@ public class ChooseLockGeneric extends SettingsActivity {
             return mManagedPasswordProvider.createIntent(false, password);
         }
 
+        protected Intent getLockSmartLampIntent(LockscreenCredential password) {
+            ChooseLockPattern.IntentBuilder builder =
+                    new ChooseLockPattern.IntentBuilder(getContext())
+                            .setForFingerprint(mForFingerprint)
+                            .setForFace(mForFace)
+                            .setForBiometrics(mForBiometrics)
+                            .setUserId(mUserId)
+                            .setRequestGatekeeperPasswordHandle(mRequestGatekeeperPasswordHandle);
+            if (mUserPassword != null) {
+                builder.setPattern(mUserPassword);
+            }
+            if (mUnificationProfileId != UserHandle.USER_NULL) {
+                builder.setProfileToUnify(mUnificationProfileId, mUnificationProfileCredential);
+            }
+            return builder.build();
+        }
+
         protected Intent getLockPasswordIntent(int quality) {
             ChooseLockPassword.IntentBuilder builder =
                     new ChooseLockPassword.IntentBuilder(getContext())
@@ -837,6 +854,8 @@ public class ChooseLockGeneric extends SettingsActivity {
                 intent = getLockPasswordIntent(quality);
             } else if (quality == DevicePolicyManager.PASSWORD_QUALITY_SOMETHING) {
                 intent = getLockPatternIntent();
+            } else if (quality == DevicePolicyManager.PASSWORD_QUALITY_SMARTLAMP) {
+                intent = getLockSmartLampIntent();
             }
             return intent;
         }
@@ -957,6 +976,7 @@ public class ChooseLockGeneric extends SettingsActivity {
                     case PATTERN:
                     case PIN:
                     case PASSWORD:
+                    case DEVTITANS:
                     case MANAGED:
                         updateUnlockMethodAndFinish(
                                 lock.defaultQuality,
