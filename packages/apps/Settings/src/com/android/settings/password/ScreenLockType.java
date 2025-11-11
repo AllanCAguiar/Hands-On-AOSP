@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 package com.android.settings.password;
 
 import android.app.admin.DevicePolicyManager;
@@ -34,6 +33,9 @@ public enum ScreenLockType {
     PATTERN(
             DevicePolicyManager.PASSWORD_QUALITY_SOMETHING,
             "unlock_set_pattern"),
+    DEVTITANS(
+            DevicePolicyManager.PASSWORD_QUALITY_DEVTITANS,
+            "unlock_set_devtitans"),
     PIN(
             DevicePolicyManager.PASSWORD_QUALITY_NUMERIC,
             DevicePolicyManager.PASSWORD_QUALITY_NUMERIC_COMPLEX,
@@ -82,6 +84,8 @@ public enum ScreenLockType {
         switch (quality) {
             case DevicePolicyManager.PASSWORD_QUALITY_SOMETHING:
                 return ScreenLockType.PATTERN;
+            case DevicePolicyManager.PASSWORD_QUALITY_DEVTITANS:
+                return ScreenLockType.DEVTITANS;
             case DevicePolicyManager.PASSWORD_QUALITY_NUMERIC:
             case DevicePolicyManager.PASSWORD_QUALITY_NUMERIC_COMPLEX:
                 return ScreenLockType.PIN;
