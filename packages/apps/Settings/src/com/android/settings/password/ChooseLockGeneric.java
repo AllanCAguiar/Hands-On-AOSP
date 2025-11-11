@@ -735,9 +735,9 @@ public class ChooseLockGeneric extends SettingsActivity {
             return mManagedPasswordProvider.createIntent(false, password);
         }
 
-        protected Intent getLockSmartLampIntent(LockscreenCredential password) {
-            ChooseLockPattern.IntentBuilder builder =
-                    new ChooseLockPattern.IntentBuilder(getContext())
+        protected Intent getLockSmartLampIntent() {
+            ChooseLockDevtitans.IntentBuilder builder =
+                    new ChooseLockDevtitans.IntentBuilder(getContext())
                             .setForFingerprint(mForFingerprint)
                             .setForFace(mForFace)
                             .setForBiometrics(mForBiometrics)
@@ -854,7 +854,7 @@ public class ChooseLockGeneric extends SettingsActivity {
                 intent = getLockPasswordIntent(quality);
             } else if (quality == DevicePolicyManager.PASSWORD_QUALITY_SOMETHING) {
                 intent = getLockPatternIntent();
-            } else if (quality == DevicePolicyManager.PASSWORD_QUALITY_SMARTLAMP) {
+            } else if (quality == DevicePolicyManager.PASSWORD_QUALITY_DEVTITANS) {
                 intent = getLockSmartLampIntent();
             }
             return intent;
