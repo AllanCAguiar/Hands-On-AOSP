@@ -158,12 +158,12 @@ public class ChooseLockDevtitans extends SettingsActivity {
 
     @Override
     protected boolean isValidFragment(String fragmentName) {
-        if (ChooseLockPatternFragment.class.getName().equals(fragmentName)) return true;
+        if (ChooseLockDevtitansFragment.class.getName().equals(fragmentName)) return true;
         return false;
     }
 
     /* package */ Class<? extends Fragment> getFragmentClass() {
-        return ChooseLockPatternFragment.class;
+        return ChooseLockDevtitansFragment.class;
     }
 
     @Override
@@ -187,7 +187,7 @@ public class ChooseLockDevtitans extends SettingsActivity {
         return false;
     }
 
-    public static class ChooseLockPatternFragment extends InstrumentedFragment
+    public static class ChooseLockDevtitansFragment extends InstrumentedFragment
             implements SaveAndFinishWorker.Listener {
 
         public static final int CONFIRM_EXISTING_REQUEST = 55;
@@ -449,7 +449,7 @@ public class ChooseLockDevtitans extends SettingsActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            if (!(getActivity() instanceof ChooseLockPattern)) {
+            if (!(getActivity() instanceof ChooseLockDevtitans)) {
                 throw new SecurityException("Fragment contained in wrong activity");
             }
             Intent intent = getActivity().getIntent();

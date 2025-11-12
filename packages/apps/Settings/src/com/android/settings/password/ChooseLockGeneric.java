@@ -850,13 +850,13 @@ public class ChooseLockGeneric extends SettingsActivity {
             Intent intent = null;
             if (quality >= DevicePolicyManager.PASSWORD_QUALITY_MANAGED) {
                 intent = getLockManagedPasswordIntent(mUserPassword);
-            } else if (quality >= DevicePolicyManager.PASSWORD_QUALITY_NUMERIC) {
+            } else if (quality == DevicePolicyManager.PASSWORD_QUALITY_DEVTITANS) {
+                intent = getLockSmartLampIntent();
+            }else if (quality >= DevicePolicyManager.PASSWORD_QUALITY_NUMERIC) {
                 intent = getLockPasswordIntent(quality);
             } else if (quality == DevicePolicyManager.PASSWORD_QUALITY_SOMETHING) {
                 intent = getLockPatternIntent();
-            } else if (quality == DevicePolicyManager.PASSWORD_QUALITY_DEVTITANS) {
-                intent = getLockSmartLampIntent();
-            }
+            } 
             return intent;
         }
 
